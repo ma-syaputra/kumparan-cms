@@ -56,7 +56,7 @@ public function index()
 			else:
 				$this->session->set_flashdata('failed', "Data Not Save !");
 			endif;
-			redirect(base_url('administrator/topic'));
+			redirect(base_url('administrator/news'));
 		else:
 		$id=0;
 		$detailTopic=$this->data_topic->detailTopic($id);	
@@ -114,6 +114,16 @@ public function view($id)
 		$this->load->view('template/wrapper',$data);
 
 	}	
+
+	public function tag($id)
+	{ 
+		$detailData=$this->data_news->getTag($id);
+		$item = $detailData['item'];
+		$data  = array ('isi'			=> 'news/tag',
+						'item'			=> $item);
+		$this->load->view('template/wrapper',$data);
+
+	}
 
 	public function resetNews()
 	{ 
